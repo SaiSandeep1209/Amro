@@ -1,0 +1,39 @@
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 40ch;
+}
+.section-heading--center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+  max-width: 52ch;
+}
+/* Centered headings get a matching decorative line on both sides. */
+.section-heading--center .eyebrow::after {
+  content: '';
+  width: 2.2rem;
+  height: 1px;
+  background: var(--c-gold);
+  opacity: 0.7;
+}
+
+.section-heading__title {
+  font-size: var(--fs-h2);
+  color: var(--c-cream);
+}
+.section-heading__title.is-light {
+  color: var(--c-on-gold);
+}
+
+.section-heading__word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-right: 0.22em;
+}
+.section-heading__word-inner {
+  display: inline-block;
+  will-change: transform;
+}

@@ -1,0 +1,100 @@
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-ambient);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Warm soft glows that slowly breathe */
+.ambient__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  will-change: transform, opacity;
+}
+.ambient__glow--1 {
+  top: -10%;
+  left: -8%;
+  width: 45vmax;
+  height: 45vmax;
+  background: radial-gradient(circle, rgba(200, 163, 92, 0.18), transparent 65%);
+  animation: glow-float-1 22s var(--ease-in-out) infinite;
+}
+.ambient__glow--2 {
+  bottom: -15%;
+  right: -10%;
+  width: 50vmax;
+  height: 50vmax;
+  background: radial-gradient(circle, rgba(232, 146, 58, 0.12), transparent 65%);
+  animation: glow-float-2 28s var(--ease-in-out) infinite;
+}
+@keyframes glow-float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6vw, 4vh) scale(1.1);
+  }
+}
+@keyframes glow-float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5vw, -3vh) scale(1.08);
+  }
+}
+
+/* Subtle film-grain noise */
+.ambient__noise {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: noise-shift 0.6s steps(2) infinite;
+}
+@keyframes noise-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-3%, 2%);
+  }
+  100% {
+    transform: translate(2%, -3%);
+  }
+}
+
+/* Floating particles (dust in warm light) */
+.ambient__particle {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: var(--c-gold-soft);
+  opacity: 0;
+  box-shadow: 0 0 6px rgba(227, 201, 143, 0.6);
+  animation-name: particle-rise;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+@keyframes particle-rise {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(var(--drift), -105vh);
+    opacity: 0;
+  }
+}

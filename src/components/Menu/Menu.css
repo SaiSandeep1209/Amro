@@ -1,0 +1,108 @@
+.menu {
+  background: var(--c-ink);
+  position: relative;
+}
+
+.menu__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.4rem;
+}
+
+.menu__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: clamp(1.5rem, 3vw, 2.2rem);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--c-line);
+}
+.menu__tab {
+  position: relative;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  color: var(--c-muted);
+  white-space: nowrap;
+  transition: color var(--dur-fast);
+}
+.menu__tab:hover {
+  color: var(--c-cream);
+}
+.menu__tab.is-active {
+  color: var(--c-on-gold);
+}
+.menu__tab-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--c-gold), var(--c-gold-soft));
+  border-radius: 999px;
+}
+
+.menu__panel {
+  margin-top: 1.8rem;
+}
+.menu__tagline {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-style: italic;
+  color: var(--c-gold-soft);
+  margin-bottom: 1.4rem;
+}
+
+.menu__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem 4rem;
+}
+.menu__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.menu__row-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+.menu__item-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--c-cream);
+  white-space: nowrap;
+}
+.menu__sig {
+  color: var(--c-gold);
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+.menu__leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(244, 236, 224, 0.2);
+  transform: translateY(-4px);
+}
+.menu__item-desc {
+  font-size: 0.92rem;
+  color: var(--c-muted);
+  max-width: 42ch;
+}
+
+@media (max-width: 760px) {
+  .menu__list {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .menu__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu__tabs::-webkit-scrollbar {
+    display: none;
+  }
+}
